@@ -5,6 +5,7 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.IO;
 using System.Reflection;
 
@@ -18,7 +19,15 @@ namespace Ucu.Poo.GameOfLife
                 Assembly.GetExecutingAssembly().Location);
             string boardPath = Path.Combine(folder, "board.txt");
             // Reemplaza 👇 esta línea con tu código
-            Console.WriteLine(boardPath);
+
+            bool[,] fileData = FileReader.ReadFile(boardPath);
+            Board board = new Board(fileData);
+            while (true)
+            {
+                ConsolePrinter.Print(board);
+                Game.NextGen(board);
+                Thread.Sleep(300);
+            }
         }
     }
 }
