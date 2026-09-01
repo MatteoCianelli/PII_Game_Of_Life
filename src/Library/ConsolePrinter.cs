@@ -18,11 +18,11 @@ namespace Ucu.Poo.GameOfLife
         {
             Console.Clear();
             StringBuilder s = new StringBuilder();
-            for (int y = 0; y<board.Height;y++)
+            for (int y = 0; y < board.Height; y++)
             {
-                for (int x = 0; x<board.Width; x++)
+                for (int x = 0; x < board.Width; x++)
                 {
-                    if(board.Content[x,y])
+                    if (board.Content[x, y])
                     {
                         s.Append("|X|");
                     }
@@ -31,8 +31,10 @@ namespace Ucu.Poo.GameOfLife
                         s.Append("___");
                     }
                 }
+
                 s.Append("\n");
             }
+
             Console.WriteLine(s.ToString());
         }
     }

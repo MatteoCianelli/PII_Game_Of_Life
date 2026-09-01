@@ -14,18 +14,26 @@ namespace Ucu.Poo.GameOfLife
     public class Board
     {
         public bool[,] Content { get; set; }
-        public int Height 
-        { 
-            get { return this.Content.GetLength(1); } 
-        }
-        public int Width
-        {
-            get { return this.Content.GetLength(0); }
-        }
+
+        public int Height { get; private set; }
+
+        public int Width { get; private set; }
 
         public Board(bool[,] content)
         {
             this.Content = content;
+            this.Height = content.GetLength(1);
+            this.Width = content.GetLength(0);
+        }
+
+        public bool CellIsAlive(int x, int y)
+        {
+            return this.Content[x, y];
+        }
+
+        public void ChangeCellValue(int x, int y, bool value)
+        {
+            this.Content[x, y] = value;
         }
     }
 }
